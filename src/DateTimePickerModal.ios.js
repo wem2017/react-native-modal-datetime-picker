@@ -136,7 +136,7 @@ export class DateTimePickerModal extends React.PureComponent {
         >
           <HeaderComponent
             label={headerTextIOS}
-            color={titleColor}
+            titleColor={titleColor}
             borderColor={borderColor}
           />
           <PickerComponent
@@ -149,6 +149,7 @@ export class DateTimePickerModal extends React.PureComponent {
             label={confirmTextIOS}
             borderColor={borderColor}
             backgroundColor={backgroundColor}
+            buttonTextColor={buttonTextColor}
           />
         </View>
         <CancelButtonComponent
@@ -156,6 +157,7 @@ export class DateTimePickerModal extends React.PureComponent {
           label={cancelTextIOS}
           borderColor={borderColor}
           backgroundColor={backgroundColor}
+          buttonTextColor={buttonTextColor}
         />
       </Modal>
     );
@@ -174,10 +176,15 @@ const pickerStyles = StyleSheet.create({
   },
 });
 
-export const Header = ({ label, style = headerStyles, color }) => {
+export const Header = ({
+  label,
+  style = headerStyles,
+  titleColor,
+  borderColor,
+}) => {
   return (
-    <View style={style.root}>
-      <Text style={[style.text, { color }]}>{label}</Text>
+    <View style={[style.root, { borderColor }]}>
+      <Text style={[style.text, { color: titleColor }]}>{label}</Text>
     </View>
   );
 };
